@@ -2,7 +2,7 @@ from autorizacion.seedwork.aplicacion.queries import Query, QueryHandler, QueryR
 from autorizacion.seedwork.aplicacion.queries import ejecutar_query as query
 from autorizacion.modulos.validacion_usuario.infraestructura.repositorios import RepositorioValidacion_Usuario
 from dataclasses import dataclass
-from ..comandos.base import ReservaQueryBaseHandler
+from autorizacion.modulos.validacion_usuario.aplicacion.comandos.base import CrearValidacion_UsuarioBaseHandler
 from autorizacion.modulos.validacion_usuario.aplicacion.mapeadores import MapeadorValidacion_Usuario
 import uuid
 
@@ -10,7 +10,7 @@ import uuid
 class ObtenerValidacion_Usuario(Query):
     id: str
 
-class ObtenerValidacion_UsuarioHandler(ReservaQueryBaseHandler):
+class ObtenerValidacion_UsuarioHandler(CrearValidacion_UsuarioBaseHandler):
 
     def handle(self, query: ObtenerValidacion_Usuario) -> QueryResultado:
         repositorio = self.fabrica_repositorio.crear_objeto(RepositorioValidacion_Usuario.__class__)

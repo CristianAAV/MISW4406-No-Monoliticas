@@ -9,4 +9,4 @@ class Validacion_UsuarioDTO(DTO):
     usuario: str = field(default_factory=str)
     nombre: str = field(default_factory=str)
     imagen: str = field(default_factory=str)
-    fecha_fin: int = field(default_factory=int)
+    fecha_fin: str = field(default_factory=str)
