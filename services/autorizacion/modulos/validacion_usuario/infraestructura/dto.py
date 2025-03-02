@@ -1,5 +1,5 @@
-from autorizacion.config.db import db
 from sqlalchemy.orm import declarative_base, relationship
+from autorizacion.config.db import db
 from sqlalchemy import Column, ForeignKey, Integer, Table
 
 from datetime import datetime

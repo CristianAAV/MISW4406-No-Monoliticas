@@ -31,17 +31,29 @@ def agregar_validacion_usuario():
         validacion_usuario_dict = request.json
         map_validacion_usuario = MapeadorValidacion_UsuarioDTOJson()
         validacion_usuario_dto = map_validacion_usuario.externo_a_dto(validacion_usuario_dict)
-        comando = CrearValidacion_Usuario(validacion_usuario_dto.fecha_validacion, validacion_usuario_dto.fecha_actualizacion, validacion_usuario_dto.id, validacion_usuario_dto.nombre, validacion_usuario_dto.imagen, validacion_usuario_dto.fecha_fin)
+        #comando_usuario = Obtener_Usuario(validacion_usuario_dto.usuario)
+        '''
+        
+        Instar proyecion de validacion de usuario
+        
+        if comando:
+            return Response('{Usuario Valido}', status=202, mimetype='application/json')
+        else:
+            return Response('{Usuario Invalido}', status=400, mimetype='application/json')
+        
+        '''
+        
+        comando = CrearValidacion_Usuario(validacion_usuario_dto.fecha_validacion, validacion_usuario_dto.fecha_actualizacion, validacion_usuario_dto.id, validacion_usuario_dto.usuario, validacion_usuario_dto.nombre, validacion_usuario_dto.imagen, validacion_usuario_dto.fecha_fin)
         despachador = Despachador()
         despachador.publicar_comando(comando, 'comandos-validacion_usuario')
-        
-        return Response('{}', status=202, mimetype='application/json')
+        return Response('{Usuario Valido}', status=202, mimetype='application/json')
+    
     except ExcepcionDominio as e:
         return Response(json.dumps(dict(error=str(e))), status=400, mimetype='application/json')
 
-@bp.route('/validacion_usuario', methods=['GET'])
-@bp.route('/validacion_usuario/<id>', methods=['GET'])
-def dar_validacion_usuario(id=None):
+@bp.route('/usuario', methods=['GET'])
+@bp.route('/usuario/<id>', methods=['GET'])
+def dar_usuario(id=None):
     if id:
         query_resultado = ejecutar_query(ObtenerValidacion_Usuario(id))
         map_validacion_usuario = MapeadorValidacion_UsuarioDTOJson()

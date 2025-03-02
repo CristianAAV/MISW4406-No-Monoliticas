@@ -79,7 +79,7 @@ def is_flask():
         return False
 
 def registrar_unidad_de_trabajo(serialized_obj):
-    from seguridad.config.uow import UnidadTrabajoSQLAlchemy
+    from autorizacion.config.uow import UnidadTrabajoSQLAlchemy
     from flask import session
     
 
@@ -87,7 +87,7 @@ def registrar_unidad_de_trabajo(serialized_obj):
 
 def flask_uow():
     from flask import session
-    from seguridad.config.uow import UnidadTrabajoSQLAlchemy
+    from autorizacion.config.uow import UnidadTrabajoSQLAlchemy
     if session.get('uow'):
         return session['uow']
     else:

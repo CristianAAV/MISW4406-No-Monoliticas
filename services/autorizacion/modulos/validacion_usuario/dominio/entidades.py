@@ -8,7 +8,7 @@ from __future__ import annotations
 from dataclasses import dataclass, field
 
 import autorizacion.modulos.validacion_usuario.dominio.objetos_valor as ov
-from autorizacion.modulos.validacion_usuario.dominio.eventos import Validacion_UsuarioAgregada
+from autorizacion.modulos.validacion_usuario.dominio.eventos import Validacion_UsuarioAgregada, UsuarioAgregada
 from autorizacion.seedwork.dominio.entidades import AgregacionRaiz, Entidad
 
 @dataclass

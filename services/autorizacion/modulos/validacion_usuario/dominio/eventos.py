@@ -44,6 +44,7 @@ class UsuarioCreada(EventoDominio):
 @dataclass
 class UsuarioAgregada(EventoDominio):
     id_reserva: uuid.UUID = None
+    usuario: str = None
     
     
 @dataclass

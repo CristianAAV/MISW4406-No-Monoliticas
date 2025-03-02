@@ -3,6 +3,7 @@ import threading
 from flask import Flask, app, render_template, request, url_for, redirect, jsonify, session
 from flask_swagger import swagger
 import logging
+from autorizacion.modulos.validacion_usuario.infraestructura.dto import Usuario as UsuarioDTO
 
 basedir = os.path.abspath(os.path.dirname(__file__))
 
@@ -60,12 +61,21 @@ def create_app(configuracion={}):
         if not app.config.get('TESTING'):
             print('comenzar_consumidor()')
             comenzar_consumidor(app)  # Pasamos la app para el contexto
+        '''try:
+            db.session.add(UsuarioDTO(usuario='admin'))
+            db.session.add(UsuarioDTO(usuario='admin1'))
+            db.session.add(UsuarioDTO(usuario='admin2'))
+            db.session.add(UsuarioDTO(usuario='admin3'))
+            db.session.commit()
+        except Exception as e:
+            db.session.rollback()
+            print('Error al agregar la validacion_usuario:', e)'''
 
     # Importa Blueprints
-    from . import validacion_usuarioes, envio_imagen
+    from . import validacion_usuario, envio_imagen
 
     # Registro de Blueprints
-    app.register_blueprint(validacion_usuarioes.bp)
+    app.register_blueprint(validacion_usuario.bp)
     app.register_blueprint(envio_imagen.bp)
 
     @app.route("/spec", methods=["GET"])
