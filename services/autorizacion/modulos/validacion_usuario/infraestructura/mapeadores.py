@@ -24,7 +24,7 @@ class MapeadorValidacion_Usuario(Mapeador):
         return validacion_usuario_dto
 
     def dto_a_entidad(self, dto: Validacion_UsuarioDTO) -> Validacion_Usuario:
-        validacion_usuario = Validacion_Usuario(dto.id, dto.fecha_validacion, dto.fecha_actualizacion, dto.usuario, dto.imagen)
+        validacion_usuario = Validacion_Usuario( dto.fecha_validacion, dto.fecha_actualizacion, dto.id, dto.usuario, dto.imagen)
         return validacion_usuario
     
     
@@ -40,5 +40,5 @@ class MapeadorUsuario(Mapeador):
         return usuario_dto
 
     def dto_a_entidad(self, dto: Validacion_UsuarioDTO) -> Validacion_Usuario:
-        validacion_usuario = Validacion_Usuario(dto.id, dto.fecha_validacion, dto.fecha_actualizacion, dto.usuario, dto.imagen)
+        validacion_usuario = Validacion_Usuario( dto.fecha_validacion, dto.fecha_actualizacion, dto.id, dto.usuario, dto.imagen)
         return validacion_usuario
